@@ -1,0 +1,72 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title >Register</mat-card-title>
+    </mat-card-header>
+    <!-- <mat-card-header *ngIf="this.isSuccessful">
+        <mat-card-title >Proceed to Log In</mat-card-title>
+    </mat-card-header> -->
+    <mat-card-content>
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Name"  type="name"  class="form-control"  name="name"
+                                    [(ngModel)]="form.name" required #name="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && name.errors }"/>
+                        </mat-form-field>
+                        <mat-error *ngIf="name.invalid">Name invalid</mat-error>
+                    </td>
+                    <td>
+                        <div class="invalid-feedback" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors['required']">Name is required</div>
+                            <div *ngIf="name.errors['email']">Name must be valid
+                            </div>
+                          </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Email" type="email" class="form-control" name="email"
+                                    [(ngModel)]="form.email" required email #email="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && email.errors }"/>
+                        </mat-form-field>
+                        <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+                    </td>
+                    <td>
+                        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                            <div *ngIf="email.errors['required']">Email is required</div>
+                            <div *ngIf="email.errors['email']">Email must be a valid email address</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Password" type="password" class="form-control" name="password"
+                                    [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && password.errors }"/>
+                        </mat-form-field>
+                        <mat-error *ngIf="password.invalid">Password invalid</mat-error>
+                    </td>
+                    <td>
+                        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+                            <div *ngIf="password.errors['required']">Password is required </div>
+                            <div *ngIf="password.errors['minlength']">Password must be at least 6 characters </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="onSubmit()" color="primary" >Register </button>
+    </mat-card-actions>
+    <!-- <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div> -->
+</mat-card>
+
+
