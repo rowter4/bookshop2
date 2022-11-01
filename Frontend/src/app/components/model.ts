@@ -1,7 +1,7 @@
-export interface Login {
-    userId: string
-    password: string
-}
+// export interface Login {
+//     userId: string
+//     password: string
+// }
 
 export interface BookDetail {
     genre: string
@@ -11,12 +11,16 @@ export interface BookDetail {
     format: string
     description: string
 
-    price: number
+    price: any
     pages: number
-    rating: number
+    rating: string
 
     book_id: number,
     pic: Blob 
+
+    username: string
+    bookTitle: string
+   
     
 }
 

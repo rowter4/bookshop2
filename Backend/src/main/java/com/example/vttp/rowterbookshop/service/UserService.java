@@ -42,6 +42,16 @@ public class UserService implements UserDetailsService {
         return 1== uRepo.getUserByEmailAndPassword(email, password);
     }
 
+    public Optional<String> getNameFromEmail(String email) {
+        String name = uRepo.getNameByEmail(email);
+        
+        if (name == null) {
+			throw new UsernameNotFoundException("Name not found with email: " + email);
+		}
+		
+        
+        return Optional.of(name);
+    }
     // public boolean changeUserPw(User user) {
     //     return 1 == uRepo.updatePw(user);
     // }

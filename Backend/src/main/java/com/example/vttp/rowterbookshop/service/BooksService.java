@@ -6,12 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.vttp.rowterbookshop.model.BookDetail;
 import com.example.vttp.rowterbookshop.model.BookSummary;
 import com.example.vttp.rowterbookshop.repo.BooksRepository;
 
-// import vttp2022.iss.book.backend.models.BookDetail;
-// import vttp2022.iss.book.backend.models.BookSummary;
-// import vttp2022.iss.book.backend.repository.GetBooksRepository;
 
 @Service
 public class BooksService {
@@ -23,7 +21,15 @@ public class BooksService {
         return bookRepo.getBooks();
     }
     
-    // public Optional<BookDetail> getBookById(String bookId) {
-    //     return getBookRepo.getBookById(bookId);
+    public Optional<BookDetail> getBookById(String bookId) {
+        return bookRepo.getBookById(bookId);
+    } 
+
+    public Optional<String> deleteBookById(String bookId) {
+        return bookRepo.deleteBookById(bookId);
+    } 
+
+    // public Optional<String> getNameFromEmail(String email) {
+    //     return bookRepo.getNameFromEmail(email);
     // } 
 }

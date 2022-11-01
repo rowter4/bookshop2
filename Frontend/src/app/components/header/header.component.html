@@ -19,8 +19,9 @@
         <span class="example-spacer"></span>
         <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
         <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a>
-        <a mat-button *ngIf="loginService.isUserLoggedIn() && loginService.isUserAdmin() " routerLink="/" class="nav-link">Add New Items</a>
-        <a mat-button *ngIf="loginService.isUserLoggedIn() " routerLink="/" class="nav-link">Get Past Orders</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn() && loginService.isUserAdmin() " routerLink="/add-item" class="nav-link">Add New Items</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn() " routerLink="/cart" class="nav-link">View Cart</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn() " routerLink="/" class="nav-link">Main Book List</a>
         <!-- <a mat-button *ngIf="loginService.isUserLoggedIn() && loginService.isUserAdmin()" routerLink="/add-item" >Add New Item</a> -->
         <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Log Out</a>
     </mat-toolbar-row>

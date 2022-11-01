@@ -17,13 +17,19 @@ public class UserRepo {
 
     // query
     public User getUserByEmail(String email) {
-        final SqlRowSet q = temp.queryForRowSet(
-            "select * from user where email like ?", email
-        );
+        final SqlRowSet q = temp.queryForRowSet( "select * from user where email like ?", email );
         if(!q.next())
             return null;
 
         return User.create(q);
+    }
+
+    public String getNameByEmail(String email) {
+        final SqlRowSet q = temp.queryForRowSet( "select * from user where email like ?", email );
+        if(!q.next())
+            return null;
+
+        return q.getString("name");
     }
 
     // insert "insert into user (userId,email,password) values (?,?,sha1(?))"
@@ -37,10 +43,7 @@ public class UserRepo {
 
     // query
     public int getUserByEmailAndPassword(String email, String password) {
-        final SqlRowSet q = temp.queryForRowSet(
-            "select count(*) as user_count from user where email = ? and password = sha1(?)"
-                , email, password
-        );
+        final SqlRowSet q = temp.queryForRowSet( "select count(*) as user_count from user where email = ? and password = sha1(?)", email, password);
         if(!q.next())
             return 0;
         return q.getInt("user_count");

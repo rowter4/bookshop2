@@ -3,6 +3,8 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 import { HttpClientService } from 'src/app/service/httpclient.service';
 import { BookSummary } from '../model';
 import { LandingService } from './landing.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BooksListDialog } from './dialog/landing-dialog.component';
 // import { Favorite, HttpClientService } from '../service/httpclient.service';
 
 @Component({
@@ -11,41 +13,22 @@ import { LandingService } from './landing.service';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-  // favorites: Favorite[] = [];
-  // displayedColumns: string[] = ["name", "car_park_no", "delete"];
-  // content?: String;
+
   
-  content?: string;
+  // content?: string;
   email = sessionStorage.getItem("email")
   admin : boolean = false 
+  name : any = "{}"
 
   booksList: BookSummary[] = []
 
-  constructor(private httpClientService: HttpClientService, private landingSvc: LandingService, public loginService : AuthenticationService) { }
+  constructor(private httpClientService: HttpClientService, private landingSvc: LandingService, 
+              public loginService : AuthenticationService, public dialog: MatDialog) { }
 
-  // ngOnInit(): void {
-  //   this.httpClientService.getFavorites().subscribe(
-  //     response => this.handleSuccessfulResponse(response));
-  // }
   ngOnInit(): void {
-
     this.admin = false
-
     this.callAllBooks()
-
-    // this.httpClientService.getGreeting().subscribe({
-    //   next: data => {
-    //     this.content = data;
-    //   },
-    //   error: err => {console.log(err)
-    //     if (err.error) {
-    //       // this.content = JSON.parse(err.error).message;
-    //       this.content = err.error;
-    //     } else {
-    //       this.content = "Error with status: " + err.status;
-    //     }
-    //   }
-    // });
+    this.getNameofUser()
   }
 
   callAllBooks() {
@@ -60,17 +43,48 @@ export class LandingComponent implements OnInit {
       })
   }
 
+  getNameofUser() {
+    this.landingSvc.getName()    
+      .then(result => {
+        console.info('>>> get name of user result : ', result)
+        this.name = result;
+        
+      })
+      .catch(error => {
+        console.error('>>>> error from name of user : ', error)
+      })
+  }
+
+  openDialog(bookTitle: string, book_id: number): void {
+    
+    let dialogRef = this.dialog.open(BooksListDialog, {
+      height: '200px',
+      width: '300px',
+      data: { title: bookTitle },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(`Dialog result: ${result}`);
+
+        console.log(`Book Id that is being read result: ${book_id}`);
+
+        this.landingSvc.deleteBook(book_id)    
+          .then(result => {
+            console.info('>>> deleted book resource result : ', result)
+            this.ngOnInit()
+            // this.name = result;
+            
+          })
+          .catch(error => {
+            console.error('>>>> delete book resource of user : ', error)
+          })
 
 
-  // ngAfterViewInit(): void {
-  //   console.info(">>>>> email" , this.email)
-  //   if (this.email == "fred@gmail.com") {
-  //     this.admin = true
-  //   }
-  // }
+      }
+        
+    });
+  }
 
-  // handleSuccessfulResponse(response: any) {
-  //   this.favorites = response;
-  // }
 
 }

@@ -1,4 +1,4 @@
--- drop database if exist cpDatabase;
+-- drop database if exist admin_db;
 
 create database admin_db;
 
@@ -12,33 +12,50 @@ create table user (
     -- primary key(userId);
 );
 
-create table cp_info (
-    car_park_no varchar(16),
-    address varchar(256),
-    x_coord dec(10,9),
-    y_coord dec(10,9),
-    car_park_type varchar(256),
-    type_of_parking_system varchar(256),
-    short_term_parking varchar(256),
-    free_parking varchar(256),
-    night_parking varchar(256),
-    car_park_decks int,
-    gantry_height dec(3,2),
-    car_park_basement enum('Y','N'),
+create table line_item (
+    item_id int auto_increment,
+    title varchar(512) ,
+    quantity int ,
+    price float(5,2) not null ,
+    ord_id char(8) not null, 
+    email varchar(128),
 
-    primary key(car_park_no)
-);
-
-create table favourite ( 
-    favId int auto_increment not null,
-    email varchar(64) not null, 
-    car_park_no varchar(64) not null,
-
-    primary key(favId),
-
+    primary key(item_id),
+    
     constraint fk_email
-    foreign key(email) references user(email),
-
-    constraint fk_car_park_no
-    foreign key(car_park_no) references cp_info(car_park_no)
+		foreign key(email)
+        references user(email)
 );
+
+create table order_summary (
+	ord_id char(8) not null,
+    email varchar(128) not null,
+    total float(7,2) not null ,
+    ts timestamp,
+    
+	primary key(ord_id),
+    
+    constraint fk_email_2
+		foreign key(email)
+        references user(email)
+);
+
+create table book_details (
+
+    book_id int auto_increment,
+    added_by int,
+    description text,
+    format varchar(64),
+    authors varchar(512) not null,
+    edition varchar(64) default '',
+    title varchar(512) not null,
+    genres varchar(512),
+    pages int default 0,
+	rating float(3, 2) default 1.0,
+    price float(5, 2) default 1.0,
+	pic mediumblob,
+
+	primary key(book_id)
+
+);
+

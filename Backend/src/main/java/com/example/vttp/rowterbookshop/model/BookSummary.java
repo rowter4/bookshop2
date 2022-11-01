@@ -4,11 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+// import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
-import jakarta.json.JsonValue;
+// import jakarta.json.JsonValue;
 
 public class BookSummary {
 
