@@ -9,15 +9,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.example.vttp.rowterbookshop.model.User;
+import static com.example.vttp.rowterbookshop.repo.Queries.*;
 
 @Repository
 public class UserRepo {
+    
     @Autowired
     private JdbcTemplate temp;
 
-    // query
     public User getUserByEmail(String email) {
-        final SqlRowSet q = temp.queryForRowSet( "select * from user where email like ?", email );
+        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_EMAIL, email );
         if(!q.next())
             return null;
 
@@ -25,25 +26,22 @@ public class UserRepo {
     }
 
     public String getNameByEmail(String email) {
-        final SqlRowSet q = temp.queryForRowSet( "select * from user where email like ?", email );
+        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_EMAIL, email );
         if(!q.next())
             return null;
 
         return q.getString("name");
     }
 
-    // insert "insert into user (userId,email,password) values (?,?,sha1(?))"
-    public boolean  saveNewUser(User user) {
-        final int added = temp.update(
-            "insert into user (userId,email,password,name) values (?,?,?,?)"
-            ,user.getId(),user.getEmail(),new BCryptPasswordEncoder().encode(user.getPassword()), user.getName()
-        );
+    public boolean saveNewUser(User user) {
+        final int added = temp.update(SQL_INSERT_NEW_USER, user.getId(), user.getEmail(),
+                                    new BCryptPasswordEncoder().encode(user.getPassword()), user.getName() );
         return added > 0;
     }
 
     // query
     public int getUserByEmailAndPassword(String email, String password) {
-        final SqlRowSet q = temp.queryForRowSet( "select count(*) as user_count from user where email = ? and password = sha1(?)", email, password);
+        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_LOGIN, email, password);
         if(!q.next())
             return 0;
         return q.getInt("user_count");

@@ -67,9 +67,9 @@ public class OrderRepository {
         return 1 == count;
     }
 
-    public List<BookOrderHistory> getAllOrder(String username) {
+    public List<BookOrderHistory> getAllOrder(String email) {
 
-        SqlRowSet rs = template.queryForRowSet(SQL_GET_ORDER_HISTORY,username);
+        SqlRowSet rs = template.queryForRowSet(SQL_GET_ORDER_HISTORY,email);
         List<BookOrderHistory> bookOrderList = new LinkedList<>();
 
         while (rs.next()) {

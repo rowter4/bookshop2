@@ -11,12 +11,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/heroes/">
 
-
-
-
-
-    <!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -81,24 +75,19 @@
             margin-top: 1rem;
         }
     </style>
-
-
-    <!-- Custom styles for this template -->
-    <!-- <link href="heroes.css" rel="stylesheet"> -->
 </head>
 
 
 <body>
 
     <main>
-        <!-- <h1 class="visually-hidden">Heroes examples</h1> -->
+       
 
         <div class="px-4 py-5 my-5 text-center">
-            <!-- <img class="d-block mx-auto mb-4" src="../../assets/bootstrap-themes.png" alt="" width="450" height="300"> -->
+           
             <img src="{{'data:image/jpg;base64,' + bookDetailFromId.pic}}" width="450" height="600" />
             <h1 class="display-5 fw-bold"> {{ bookDetailFromId.title }}</h1>
-            <!-- <h1 class="display-5 fw-bold"> {{ rating }}</h1> -->
-            <!-- <h1 class="display-5 fw-bold"> {{ bookDetailFromId.rating.value }}</h1> -->
+       
             <div class="col-lg-9 mx-auto">
                 <p class="lead-edited mb-4">{{ bookDetailFromId.description }}</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -109,6 +98,10 @@
                 <div style="margin-top:1.5rem;">
                     <span  class="badge text-bg-success">Rating : {{ rating }} </span>
                 </div>
+
+                <div style="margin-top:1.5rem;">
+                    <span *ngFor="let g of genreList" class="badge text-bg-secondary" style="margin-right:1.5rem;"> {{ g }} </span>
+                </div>
             </div>
         </div>
 
@@ -116,10 +109,6 @@
 
         
     </main>
-
-
-    <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
-
 
 </body>
 

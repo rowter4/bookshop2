@@ -28,16 +28,24 @@ import { CartService } from './components/cart/cart.service';
 import { SubmitOrderService } from './components/cart/submitorder.service';
 import { CartComponent } from './components/cart/cart.component';
 import { BooksListDialog } from './components/landing/dialog/landing-dialog.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { OrderHistoryService } from './components/order-history/order-history.service';
+import { PastOrderDetailService } from './components/past-order-detail/past-order-detail.service';
+import { PastOrderDetailComponent } from './components/past-order-detail/past-order-detail.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+// import { VoiceRecognitionService } from './components/add-new-items/voice-recognition.service';
+// import { PastOrderListComponent } from './components/past-order-list/past-order-list.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent, canActivate:[AuthGuardService] },
   { path: 'add-item', component: AddNewItemsComponent, canActivate:[AuthGuardService] },
-  // { path: 'addemployee', component: AddEmployeeComponent,canActivate:[AuthGuardService]},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate:[AuthGuardService] },
   { path: 'books-detail/:book_id', component: BooksDetailComponent, canActivate:[AuthGuardService] },
   { path: 'cart', component: CartComponent, canActivate:[AuthGuardService] },
+  { path: 'order-history', component: OrderHistoryComponent, canActivate:[AuthGuardService] },
+  { path: 'orderdetail/:ord_id', component: PastOrderDetailComponent, canActivate:[AuthGuardService] },
 ];
 @NgModule({
   declarations: [
@@ -50,8 +58,10 @@ const routes: Routes = [
     RegisterComponent,
     BooksDetailComponent,
     AddNewItemsComponent,
+    OrderHistoryComponent,
     CartComponent,
-    BooksListDialog
+    BooksListDialog,
+    PastOrderDetailComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +72,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { useHash: true }),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [ 
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHttpInterceptorService, multi: true }, 
@@ -71,7 +82,10 @@ const routes: Routes = [
     BooksDetailService,
     DecimalPipe,
     CartService,
-    SubmitOrderService
+    SubmitOrderService,
+    OrderHistoryService,
+    PastOrderDetailService,
+    // VoiceRecognitionService
   ],
   bootstrap: [AppComponent]
 })

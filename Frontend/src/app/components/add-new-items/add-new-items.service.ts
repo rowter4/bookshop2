@@ -23,6 +23,8 @@ export class AddNewItemsService {
         )
     }
 
+   
+
     // getBookDetailById(bookId: string) { // this branch is not being used
     //     console.info("Book id in angular service: ", bookId)
     //     return firstValueFrom(

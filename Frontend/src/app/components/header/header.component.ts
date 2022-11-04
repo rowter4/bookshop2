@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { CartService } from '../cart/cart.service';
 // import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
@@ -10,15 +11,19 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public loginService : AuthenticationService, private router : Router) { }
+  constructor(public loginService : AuthenticationService, private router : Router, private cartService : CartService) { }
 
-  // email !: any
   email = sessionStorage.getItem("email")
   admin : boolean = false 
+  public totalItem : number = 0
 
   ngOnInit(): void {
     this.admin = false
-    // this.email = sessionStorage.getItem("email")
+   
+    this.cartService.getAllItems().subscribe(result => {
+      this.totalItem = result.length
+      console.info(">>>> total item inside cart: ", this.totalItem)
+    })
     
   }
 
@@ -33,7 +38,5 @@ export class HeaderComponent implements OnInit {
     console.info(">>>> add item clicked")
     this.router.navigate(['add-item'])
   }
-
-  
 
 }

@@ -9,6 +9,8 @@ export class CartService {
     public cartItemList: any = []
     public onUpdatedItemsList = new BehaviorSubject<any>([])
 
+    public qty !: number
+
     constructor(private fb: FormBuilder) {}
 
     getAllItems() {
@@ -25,6 +27,7 @@ export class CartService {
         this.cartItemList.push(item)
         this.onUpdatedItemsList.next(this.cartItemList)
         console.info(">>>> all items inside cart fired: ", this.cartItemList)
+        this.qty = this.cartItemList.length
         this.getTotalPrice()
     }
 

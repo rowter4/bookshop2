@@ -5,6 +5,7 @@ import { AddNewItemsService } from './add-new-items.service';
 // import { AddNewItem } from './add-new-items.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookDetail } from '../model';
+// import { VoiceRecognitionService } from './voice-recognition.service';
 
 @Component({
   selector: 'app-add-new-items',
@@ -17,7 +18,7 @@ export class AddNewItemsComponent implements OnInit {
   bookPhotoUpload!: ElementRef
   
   constructor(private fb: FormBuilder, private addNewItemsSvc: AddNewItemsService, private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {  }
 
   itemForm!: FormGroup
   user = sessionStorage.getItem('email') || '';
@@ -73,6 +74,8 @@ export class AddNewItemsComponent implements OnInit {
       })
 
   }
+
+
 
   // getBookDetailsFromBookId(book_id : string) { // this code is not in use
   //   this.addNewItemsSvc.getBookDetailById(book_id)

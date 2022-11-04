@@ -26,6 +26,7 @@ export class BooksDetailComponent implements OnInit {
   rating!: any
   rating2!: string
   index!: number
+  genreList !: any
   
   bookDetailFromId: BookDetail = {
     genre: "",
@@ -54,8 +55,10 @@ export class BooksDetailComponent implements OnInit {
         console.info("result from calling the individual Id: ", result)
         this.bookDetailFromId = result
         this.rating = result.rating.toString().substring(0, 4)
+        this.genreList = result.genre.split("|"); 
 
         console.log("substring thing", this.rating.toString().substring(0, 5))
+        console.info("genre Obtained : ", this.genreList)
         
       })
       .catch(error => {

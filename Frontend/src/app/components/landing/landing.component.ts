@@ -5,6 +5,7 @@ import { BookSummary } from '../model';
 import { LandingService } from './landing.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BooksListDialog } from './dialog/landing-dialog.component';
+import { filter } from 'rxjs';
 // import { Favorite, HttpClientService } from '../service/httpclient.service';
 
 @Component({
@@ -21,6 +22,10 @@ export class LandingComponent implements OnInit {
   name : any = "{}"
 
   booksList: BookSummary[] = []
+  filteredList: BookSummary[] = []
+  _filteredText !: string
+
+
 
   constructor(private httpClientService: HttpClientService, private landingSvc: LandingService, 
               public loginService : AuthenticationService, public dialog: MatDialog) { }
@@ -29,6 +34,16 @@ export class LandingComponent implements OnInit {
     this.admin = false
     this.callAllBooks()
     this.getNameofUser()
+    this.filteredList = this.booksList
+  }
+
+  get filterText() {
+    return this._filteredText
+  }
+
+  set filterText(value:string) {
+    this._filteredText = value
+    this.filteredList = this.filterBooks(value)
   }
 
   callAllBooks() {
@@ -84,6 +99,16 @@ export class LandingComponent implements OnInit {
       }
         
     });
+  }
+
+  filterBooks(filteredTerm: string) {
+    if (this.booksList.length == 0 || filteredTerm === '') {
+        return this.booksList
+    } else {
+      return this.booksList.filter( book => {
+        return book.title.toLowerCase() === filteredTerm.toLowerCase()
+      })
+    }
   }
 
 

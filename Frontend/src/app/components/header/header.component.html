@@ -20,9 +20,13 @@
         <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
         <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a>
         <a mat-button *ngIf="loginService.isUserLoggedIn() && loginService.isUserAdmin() " routerLink="/add-item" class="nav-link">Add New Items</a>
-        <a mat-button *ngIf="loginService.isUserLoggedIn() " routerLink="/cart" class="nav-link">View Cart</a>
-        <a mat-button *ngIf="loginService.isUserLoggedIn() " routerLink="/" class="nav-link">Main Book List</a>
-        <!-- <a mat-button *ngIf="loginService.isUserLoggedIn() && loginService.isUserAdmin()" routerLink="/add-item" >Add New Item</a> -->
+        <a mat-button *ngIf="loginService.isUserLoggedIn() " routerLink="/cart" class="nav-link">Cart
+            <mat-icon *ngIf="totalItem > 0" [matBadge]="totalItem" matBadgeColor="warn">shopping_cart</mat-icon>
+        </a>
+
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/order-history" class="nav-link">See Past Order</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/" class="nav-link">Main Book List</a>
         <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Log Out</a>
+        
     </mat-toolbar-row>
 </mat-toolbar>
