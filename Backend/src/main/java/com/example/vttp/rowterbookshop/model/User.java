@@ -12,11 +12,9 @@ public class User {
     String id;
     String email;
     String password;
-    String name;
     String newPassword;
-
-    public String getNewPassword() { return newPassword;  }
-    public void setNewPassword(String newPassword) { this.newPassword = newPassword; }
+    String name;
+    String resetPasswordToken;
 
     public String getId() { return id;  }
     public void setId(String id) { this.id = id; }
@@ -29,6 +27,12 @@ public class User {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    public String getResetPasswordToken() { return resetPasswordToken; }
+    public void setResetPasswordToken(String resetPasswordToken) { this.resetPasswordToken = resetPasswordToken; }
+
+    public String getNewPassword() { return newPassword; }
+    public void setNewPassword(String newPassword) { this.newPassword = newPassword; }
 
     public static User create(SqlRowSet rowSet) {
         User user = new User();
@@ -57,4 +61,7 @@ public class User {
             .add("email", email)
             .build();
     }
+   
+   
+   
 }

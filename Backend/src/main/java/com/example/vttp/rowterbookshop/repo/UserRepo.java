@@ -13,21 +13,21 @@ import static com.example.vttp.rowterbookshop.repo.Queries.*;
 
 @Repository
 public class UserRepo {
-    
+
     @Autowired
     private JdbcTemplate temp;
 
     public User getUserByEmail(String email) {
-        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_EMAIL, email );
-        if(!q.next())
+        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_EMAIL, email);
+        if (!q.next())
             return null;
 
         return User.create(q);
     }
 
     public String getNameByEmail(String email) {
-        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_EMAIL, email );
-        if(!q.next())
+        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_EMAIL, email);
+        if (!q.next())
             return null;
 
         return q.getString("name");
@@ -35,29 +35,62 @@ public class UserRepo {
 
     public boolean saveNewUser(User user) {
         final int added = temp.update(SQL_INSERT_NEW_USER, user.getId(), user.getEmail(),
-                                    new BCryptPasswordEncoder().encode(user.getPassword()), user.getName() );
+                new BCryptPasswordEncoder().encode(user.getPassword()), user.getName());
         return added > 0;
     }
 
     // query
     public int getUserByEmailAndPassword(String email, String password) {
         final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_LOGIN, email, password);
-        if(!q.next())
+        if (!q.next())
             return 0;
         return q.getInt("user_count");
     }
 
+    public boolean updateUserDetails(User user) {
+        final int added = temp.update(SQL_UPDATE_TOKEN, user.getResetPasswordToken(), user.getEmail());
+        return added > 0;
+    }
+
+    public boolean updateUserDetails2(Boolean token, String email) {
+        final int added = temp.update(SQL_UPDATE_TOKEN, token, email);
+        return added > 0;
+    }
+
+    // public boolean updateUserDetails2(User user) {
+    // return true;
+    // }
+
+    // public boolean findByResetPasswordToken(String token) {
+    // return true;
+    // }
+
+    public User getUserFromToken(User user){
+        final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_TOKEN, user.getResetPasswordToken());
+        if (!q.next())
+            return null;
+
+        return User.create(q);
+    }
+
+    public boolean updatePasswordDetails(User user) {
+        final int added = temp.update(SQL_UPDATE_PASSWORD, new BCryptPasswordEncoder().encode(user.getNewPassword()),
+                user.getResetPasswordToken());
+        return added > 0;
+
+    }
+
+    
     // update
     // public int updatePw(User user) {
-    //     int count = temp.update("update user set password = sha1(?) where email = ? and password = sha1(?)",
-    //         user.getNewPassword(), user.getEmail(), user.getPassword());
-    //     return count;
+    // int count = temp.update("update user set password = sha1(?) where email = ?
+    // and password = sha1(?)",
+    // user.getNewPassword(), user.getEmail(), user.getPassword());
+    // return count;
     // }
-    
+
     // public void deleteUser(String email) {
-    //     temp.update("delete from user where email = ?", email);
+    // temp.update("delete from user where email = ?", email);
     // }
-
-
 
 }

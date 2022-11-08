@@ -3,14 +3,15 @@ package com.example.vttp.rowterbookshop.repo;
 public interface Queries {
 
     // setting up for admin (not in use)
-    public static final String SQL_SELECT_ADMIN_USER = "select count(*) as user_count from admin_users where username = ? and password = sha1(?)";
-                                                           
-    public static final String SQL_GET_NAME_FROM_USER = "select * from book_details where book_id = ?";
+    // public static final String SQL_SELECT_ADMIN_USER = "select count(*) as user_count from admin_users where username = ? and password = sha1(?)";                                                      
+    // public static final String SQL_GET_NAME_FROM_USER = "select * from book_details where book_id = ?";
     // to be used below:
     public static final String SQL_GET_USER_FROM_EMAIL = "select * from user where email like ?";
     public static final String SQL_INSERT_NEW_USER = "insert into user (userId,email,password,name) values (?,?,?,?)";  
     public static final String SQL_GET_USER_LOGIN = "select count(*) as user_count from user where email = ? and password = sha1(?)";                     
-
+    public static final String SQL_UPDATE_TOKEN = "update user set reset_password_token = ? where email = ?";
+    public static final String SQL_UPDATE_PASSWORD = "update user set password = ? where reset_password_token = ?";
+    public static final String SQL_GET_USER_FROM_TOKEN = "select * from user where reset_password_token = ?";
     
     // setting up for getting and inserting books
     public static final String SQL_INSERT_NEW_BOOK =  "insert into book_details(added_by, genre , title, edition , authors , format,  description, price, pages, rating, pic) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
