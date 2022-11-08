@@ -154,13 +154,6 @@
                                 </div>
                             </div>
 
-
-
-
-                            
-
-
-
                             <div class="col-md-4">
                                 <label for="price" class="form-label">Selling Price</label>
                                 <div class="input-group">
@@ -195,7 +188,7 @@
 
                         <hr class="my-4">
 
-                        <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="itemForm.invalid" (ngSubmit)="saveBook()">Add into book selling list</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="itemForm.invalid" (click)="saveBook()">Add into book selling list</button>
                     </form>
 
                     <button class="w-100 btn btn-primary btn-lg margin-top" [routerLink]="['/']" >Back to main page</button>

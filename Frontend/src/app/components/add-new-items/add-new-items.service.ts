@@ -18,6 +18,7 @@ export class AddNewItemsService {
             type: 'application/json'
         }));
         
+        console.info("add new item triggered ") 
         return firstValueFrom(
             this.http.post<any>('/upload', data)
         )

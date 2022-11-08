@@ -33,6 +33,11 @@ import { OrderHistoryService } from './components/order-history/order-history.se
 import { PastOrderDetailService } from './components/past-order-detail/past-order-detail.service';
 import { PastOrderDetailComponent } from './components/past-order-detail/past-order-detail.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { ResetPasswordService } from './components/reset-password/reset-password.service';
 // import { VoiceRecognitionService } from './components/add-new-items/voice-recognition.service';
 // import { PastOrderListComponent } from './components/past-order-list/past-order-list.component';
 
@@ -41,11 +46,14 @@ const routes: Routes = [
   { path: 'add-item', component: AddNewItemsComponent, canActivate:[AuthGuardService] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgetPasswordComponent  },
+  { path: 'reset_password', component: ResetPasswordComponent  },
   { path: 'logout', component: LogoutComponent, canActivate:[AuthGuardService] },
   { path: 'books-detail/:book_id', component: BooksDetailComponent, canActivate:[AuthGuardService] },
   { path: 'cart', component: CartComponent, canActivate:[AuthGuardService] },
   { path: 'order-history', component: OrderHistoryComponent, canActivate:[AuthGuardService] },
   { path: 'orderdetail/:ord_id', component: PastOrderDetailComponent, canActivate:[AuthGuardService] },
+  { path: 'about-us', component: AboutUsComponent, canActivate:[AuthGuardService] },
 ];
 @NgModule({
   declarations: [
@@ -61,7 +69,10 @@ const routes: Routes = [
     OrderHistoryComponent,
     CartComponent,
     BooksListDialog,
-    PastOrderDetailComponent
+    PastOrderDetailComponent,
+    AboutUsComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +84,8 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    RxReactiveFormsModule
   ],
   providers: [ 
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHttpInterceptorService, multi: true }, 
@@ -85,6 +97,7 @@ const routes: Routes = [
     SubmitOrderService,
     OrderHistoryService,
     PastOrderDetailService,
+    ResetPasswordService
     // VoiceRecognitionService
   ],
   bootstrap: [AppComponent]

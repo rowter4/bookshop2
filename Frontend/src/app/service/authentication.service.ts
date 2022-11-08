@@ -33,8 +33,11 @@ export class AuthenticationService {
   }
 
   register(email: string, password: string, name:string): Observable<any> {        
-    return this.http.post(
-      "/register",{email, password, name }, headers);
+    return this.http.post("/register",{email, password, name }, headers);
+  }
+
+  forgetPassword(email: string): Observable<any> {        
+    return this.http.post("/forget-password",{email}, headers);
   }
 
   isUserLoggedIn() {

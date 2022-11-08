@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/service/authentication.service';
-import { HttpClientService } from 'src/app/service/httpclient.service';
+// import { HttpClientService } from 'src/app/service/httpclient.service';
 import { BookSummary } from '../model';
 import { LandingService } from './landing.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -27,7 +27,7 @@ export class LandingComponent implements OnInit {
 
 
 
-  constructor(private httpClientService: HttpClientService, private landingSvc: LandingService, 
+  constructor(private landingSvc: LandingService, 
               public loginService : AuthenticationService, public dialog: MatDialog) { }
 
   ngOnInit(): void {

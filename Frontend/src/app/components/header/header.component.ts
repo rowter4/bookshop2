@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { CartService } from '../cart/cart.service';
 // import { AuthenticationService } from '../service/authentication.service';
@@ -16,6 +18,9 @@ export class HeaderComponent implements OnInit {
   email = sessionStorage.getItem("email")
   admin : boolean = false 
   public totalItem : number = 0
+
+  @ViewChild(MatDrawer)
+  drawer!: MatDrawer
 
   ngOnInit(): void {
     this.admin = false
@@ -37,6 +42,12 @@ export class HeaderComponent implements OnInit {
   addItem() {
     console.info(">>>> add item clicked")
     this.router.navigate(['add-item'])
+  }
+
+
+  toggleSidebar() {
+    this.drawer.toggle()
+    console.info(">>>> toggle clicked")
   }
 
 }

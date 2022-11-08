@@ -66,7 +66,8 @@ export class AddNewItemsComponent implements OnInit {
     this.addNewItemsSvc.upload(myFile, form)
       .then(result => {
         console.info('>>> result from upload: ', result)
-        this.ngOnInit();
+        // this.ngOnInit();
+        alert("New Book is Successfully Added!")
         this.router.navigate(['/'])
       }) 
       .catch(error => {

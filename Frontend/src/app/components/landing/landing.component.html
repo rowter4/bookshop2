@@ -86,7 +86,6 @@
   <main>
 
     <div class="p-5 mb-4 rounded-3" >
-
       <div class="container-fluid py-5" [ngClass]="loginService.isUserAdmin() ? 'background-admin' : 'background-non-admin' " >
         <h1 class="display-5 fw-bold align-center ">Welcome {{ name.message }} </h1>
         <p class="col-md-12 fs-4 align-center "> How can we help you today?
@@ -102,7 +101,6 @@
           <mat-form-field appearance="fill">
             <mat-label>Search by Book Title</mat-label>
             <input matInput placeholder="" [(ngModel)]="filterText">
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
           </mat-form-field>
 
         </div>
