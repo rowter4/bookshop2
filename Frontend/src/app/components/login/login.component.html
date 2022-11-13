@@ -20,46 +20,245 @@
     </a>
 </header> -->
 
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.104.2">
+  <title>Album example · Bootstrap v5.2</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
 
 
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <form>
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <p *ngIf="error" class="error">
-                    {{ error }}
-                </p>
-            </table>
-        </form>
 
-       
-        
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button (click)="checkLogin()" color="primary">Login</button>
-        <br>
-        <p>
-            <a routerLink="/forgot-password">Forgot your password?</a>
+  <style>
+    /* .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    } */
+
+    /* .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    } */
+
+    /* .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    } */
+
+    .background-non-admin {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    .background-admin {
+      --bs-bg-opacity: 1;
+      background-color: #dc35359e !important;
+    }
+
+    .paragraph-margin {
+      padding-top: 1rem!important;
+      padding-bottom: 1rem!important;
+    }
+
+  </style>
+
+
+</head>
+
+<body >
+
+
+  <main>
+
+    <!-- <div class="p-5 mb-4 rounded-3" >
+       <div class="container-fluid py-5" [ngClass]="loginService.isUserAdmin() ? 'background-admin' : 'background-non-admin' " >
+        <h1 class="display-5 fw-bold align-center ">Welcome {{ name.message }} </h1> 
+        <p class="col-md-12 fs-4 align-center "> How can we help you today?
         </p>
-    </mat-card-actions>
+      </div> 
+    </div> -->
+
+    <section class="paragraph-margin text-center container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Welcome to Rowter Bookshop</h1>
+          <img class="d-block mx-auto mb-4" src="../../assets/bookshop.png" alt="" style="height: 50px; width:50px;">
+          <!-- <p class="lead text-muted">Buy books written by aspiring authors </p> -->
+
+        </div>
+      </div>
+
+      <mat-card>
+        <mat-card-header>
+            <div style="text-align:center;">
+                <mat-card-title>Login to Rowter Bookshop</mat-card-title>
+            </div>
+            
+        </mat-card-header>
+        <mat-card-content>
+            <form>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <p *ngIf="error" class="error">
+                        {{ error }}
+                    </p>
+                </table>
+            </form>
+    
+           
+            
+        </mat-card-content>
+        <mat-card-actions >
+            <button mat-raised-button (click)="checkLogin()" color="primary">Login</button>
+            <br>
+            <p style="margin-top:10px;">
+                <a routerLink="/forgot-password">Forgot your password?</a>
+            </p>
+        </mat-card-actions>
+    
+    
+    </mat-card>
+    </section>
+
+    <!-- <div class="album py-5" [ngClass]="loginService.isUserAdmin() ? 'background-admin' : 'background-non-admin' ">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+         <div *ngFor="let b of booksList | filter:filterText">
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="{{'data:image/jpg;base64,' + b.pic}}" />
+                <div class="card-body">                 
+                  <p class="card-text"> {{ b.title }}  </p>                  
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                       <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/books-detail', b.book_id]" >View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="loginService.isUserAdmin()" (click)="openDialog(b.title, b.book_id)" >Delete</button>
+                    </div>
+                    <small class="text-muted"> $ {{ b.price | number : '1.2-2' }} </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>     
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <mat-card>
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <p *ngIf="error" class="error">
+                        {{ error }}
+                    </p>
+                </table>
+            </form>
+    
+           
+            
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="checkLogin()" color="primary">Login</button>
+            <br>
+            <p>
+                <a routerLink="/forgot-password">Forgot your password?</a>
+            </p>
+        </mat-card-actions>
+    
+    
+    </mat-card> -->
+  </main>
+
+  <!-- <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#">Back to top</a>
+      </p>
+      <p class="mb-1"> &copy; RowterBookshop 2022 </p>
+    </div>
+  </footer> -->
+
+</body>
+
+</html>
 
 
-</mat-card>
+
+
+
+
+
+
 

@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 @Component({
     selector: 'landing-dialog',
     templateUrl: './landing-dialog.component.html',
+    styleUrls: ['./landing-dialog.component.css']
   })
   
 export class BooksListDialog {

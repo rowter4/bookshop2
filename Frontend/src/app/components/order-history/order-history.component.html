@@ -7,13 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Pricing example · Bootstrap v5.2</title>
+    <title>Product example · Bootstrap v5.2</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/pricing/">
-
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/product/">
 
     <style>
-        .bd-placeholder-img {
+        /* .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
             -webkit-user-select: none;
@@ -64,85 +63,72 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        body {
-            background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
-        }
-
-        .container {
-            max-width: 960px;
-        }
-
-        .pricing-header {
-            max-width: 700px;
-        }
+        .col-md-x {
+            flex: 0 0 auto;
+            width: 70%;
+        } */
     </style>
 
 </head>
 
-<!-- <body> -->
-
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="check" viewBox="0 0 16 16">
-        <title>Check</title>
-        <path
-            d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-    </symbol>
-</svg>
-
-<div class="container py-3">
-    <!-- <form [formGroup]="bookOrderForm" (ngSubmit)="processForm()"> -->
-
+<body style="height:100vh;">
 
     <main>
+        <div class="container py-3">
+            <h2 class="display-6 text-center mb-4">Items</h2>
 
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Order Id </th>
+                            <th>Total Cost</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-        <h2 class="display-6 text-center mb-4">Items</h2>
+                    <tbody>
+                        <tr *ngFor="let h of bookOrderHistory ">
+                            <td>
+                                {{ h.ts }}
+                            </td>
+                            <td>
+                                {{ h.ord_id }}
+                            </td>
+                            <td>
+                                {{ h.total }}
+                            </td>
 
-        <div class="table-responsive">
-            <table class="table text-center">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Order Id </th>
-                        <th>Total Cost</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+                            <td (click)="getOrderDetail(h)">
+                                <button type="button" class="btn btn-warning btn-sm">More Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <tbody>
-                    <tr *ngFor="let h of bookOrderHistory ">
-                        <td>
-                            {{ h.ts }}
-                        </td>
-                        <td>
-                            {{ h.ord_id }}
-                        </td>
-                        <td>
-                            {{ h.total }}
-                        </td>
+            <div *ngIf="bookOrderHistory.length == 0 " class="pt-4 my-md-5 pt-md-5 border-top">
+                <div class="row">
+                    <div>
+                        <h5>There are no items in this cart </h5>
+                    </div>
+                </div>
 
-                        <td (click)="getOrderDetail(h)">
-                            <button type="button" class="btn btn-warning btn-sm">More Details</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </main>
-
-    <footer *ngIf="bookOrderHistory.length == 0 " class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-            <div>
-                <h5>There are no items in this cart </h5>
+                <button type="button" class="btn btn-warning btn-sm" [routerLink]="['/']">Back to Landing Page</button>
             </div>
         </div>
+    </main>
 
-        <button type="button" class="btn btn-warning btn-sm" [routerLink]="['/']">Back to Landing Page</button>
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#top">Back to top</a>
+            </p>
+            <p class="mb-1"> &copy; RowterBookshop 2022 </p>
+        </div>
     </footer>
-    <!-- </form> -->
-</div>
 
-
+</body>
 
 </html>

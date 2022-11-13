@@ -73,9 +73,8 @@ export class LandingComponent implements OnInit {
   openDialog(bookTitle: string, book_id: number): void {
     
     let dialogRef = this.dialog.open(BooksListDialog, {
-      height: '200px',
-      width: '300px',
       data: { title: bookTitle },
+      panelClass: 'dialog-container-custom' 
     });
 
     dialogRef.afterClosed().subscribe(result => {

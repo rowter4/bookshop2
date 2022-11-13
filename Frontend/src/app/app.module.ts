@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from "@angular/router/testing";
 // import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent } from './components/footer/footer.component';
+// import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -60,7 +60,7 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     LogoutComponent,
-    FooterComponent,
+    // FooterComponent,
     HeaderComponent,
     LandingComponent,
     RegisterComponent,

@@ -77,10 +77,9 @@ export class CartComponent implements OnInit {
     this.submitSvc.processOrder(newOrder)
       .then(result => {
         console.info('>>>> result from process of the order: ', result)
-        this.cartSvc.removeAllCart()
-        // this.bookOrderForm = this.formReset()
+        this.cartSvc.removeAllCart()        
+        alert(`Your order is already processed!`)
         this.router.navigate([''])
-        // alert(`Your registration ID is ${result.message}`)
       })
       .catch((error: HttpErrorResponse) => {
         console.error('>>>> error: ', error)

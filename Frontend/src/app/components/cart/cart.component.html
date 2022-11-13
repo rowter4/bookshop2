@@ -13,7 +13,7 @@
 
 
     <style>
-        .bd-placeholder-img {
+        /* .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
             -webkit-user-select: none;
@@ -25,28 +25,28 @@
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
-        }
+        } */
 
-        .b-example-divider {
+        /* .b-example-divider {
             height: 3rem;
             background-color: rgba(0, 0, 0, .1);
             border: solid rgba(0, 0, 0, .15);
             border-width: 1px 0;
             box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
+        } */
 
-        .b-example-vr {
+        /* .b-example-vr {
             flex-shrink: 0;
             width: 1.5rem;
             height: 100vh;
-        }
+        } */
 
-        .bi {
+        /* .bi {
             vertical-align: -.125em;
             fill: currentColor;
-        }
+        } */
 
-        .nav-scroller {
+        /* .nav-scroller {
             position: relative;
             z-index: 2;
             height: 2.75rem;
@@ -62,7 +62,7 @@
             text-align: center;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
-        }
+        } */
 
         body {
             background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
@@ -88,85 +88,100 @@
     </symbol>
 </svg> -->
 
-<div class="container py-3">
-    <form [formGroup]="bookOrderForm" (ngSubmit)="processForm()">
+<body style="height:100vh;">
 
-        <main *ngIf="productList.length > 0 ">
-   
+    <div class="container py-3">
+        <form [formGroup]="bookOrderForm" (ngSubmit)="processForm()">
 
-            <h2 class="display-6 text-center mb-4">Items</h2>
-
-            <div class="table-responsive">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-
-                            <th>No.</th>
-                            <th>Book Title</th>
-                            <th>Book Image</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Sub-Total</th>
-
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody formArrayName="bookLineOrder">
-                        <tr *ngFor="let item of productList, let i = index">
-                            <td> {{ i+1 }} </td>
-                            <td>
-                                {{ item.title }}
-                            </td>
-                            <td>
-                                <img src="{{'data:image/jpg;base64,' + item.pic}}" width="50" height="100" />
-                            </td>
-                            <td> {{ item.price | number : '1.2-2' }} </td>
-                            <td>
-                                1
-                            </td>
-                            <td> {{ item.price | number : '1.2-2' }} </td>
-                            <td (click)="removeItem(item)">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-x-square-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
-                                </svg>
+            <main>
+                <div *ngIf="productList.length > 0 ">
 
 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <h2 class="display-6 text-center mb-4">Items</h2>
 
-        </main>
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
 
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row" *ngIf="productList.length <= 0 ">
-                <div>
-                    <h5>There are no items in this cart </h5>
-                </div>
-            </div>
-            <div class="row" *ngIf="productList.length > 0 ">
+                                    <th>No.</th>
+                                    <th>Book Title</th>
+                                    <th>Book Image</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Sub-Total</th>
+
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody formArrayName="bookLineOrder">
+                                <tr *ngFor="let item of productList, let i = index">
+                                    <td> {{ i+1 }} </td>
+                                    <td>
+                                        {{ item.title }}
+                                    </td>
+                                    <td>
+                                        <img src="{{'data:image/jpg;base64,' + item.pic}}" width="50" height="100" />
+                                    </td>
+                                    <td> {{ item.price | number : '1.2-2' }} </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td> {{ item.price | number : '1.2-2' }} </td>
+                                    <td class="pointer" (click)="removeItem(item)">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                                        </svg>
 
 
-                <div class="d-flex align-middle">
-                    <div class="p-2 w-75">
-                        <h5>Grand Total : $ {{ grandTotal | number : '1.2-2' }} </h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <div class="p-2">
-                        <button class="btn btn-primary" type="submit">Submit Order!</button>
+
+
+
+                    <div class="pt-4 my-md-5 pt-md-5" >
+                        
+
+                        <div class="row" *ngIf="productList.length > 0 ">
+
+                            <strong class="d-flex justify-content-end text-nowrap">Grand Total : $ {{ grandTotal | number : '1.2-2' }} </strong>
+
+                            <div class="d-flex align-middle">
+                                <div class="p-2 w-75">
+                                    <!-- <h5>Grand Total : $ {{ grandTotal | number : '1.2-2' }} </h5> -->
+                                </div>
+
+                                <div class="p-2 w-25 d-flex justify-content-end text-nowrap">
+                                    <button class="btn btn-primary " type="submit">Submit Order!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="productList.length <= 0 ">
+                    <div style="margin-top:20vh;">
+                        <strong class="d-flex justify-content-center text-nowrap">There are no items in this cart </strong>
                     </div>
                 </div>
 
-   
-            </div>
-        </footer>
-    </form>
-</div>
+            </main>
+
+
+
+
+        </form>
+    </div>
+</body>
 
 
 
