@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// dont authenticate this particular request
 				.authorizeRequests().antMatchers("/", "/polyfills.541e62289ed8dbd7.js",
 				"/assets/**", "/runtime.facee38489797f49.js", "/styles.3f284a4b054cb2dd.css",
-				"/main.5b555dcd917f7c15.js", "/authenticate", "/login", "/register", "/forget-password", "/reset_password", "/resetpassword").permitAll()
+				"/main.2f341e263290ba82.js", "/authenticate", "/login", "/register", "/forget-password", "/reset_password", "/resetpassword").permitAll()
 				// .authorizeRequests().antMatchers("/**").permitAll()
 				// .authorizeRequests().antMatchers("/login").permitAll()
 				// all other requests need to be authenticated
