@@ -14,6 +14,6 @@ jobs:
       uses: akhileshns/heroku-deploy@v3.12.12 
       with:
         heroku_api_key: ${{ secrets.heroku_api_key }}
-        heroku_app_name: salty-scrubland-40753
+        heroku_app_name: evening-reef-93188
         heroku_email: ${{ secrets.email }}
         branch: ${{ github.ref_name }}
