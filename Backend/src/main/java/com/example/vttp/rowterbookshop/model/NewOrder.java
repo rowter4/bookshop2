@@ -3,7 +3,6 @@ package com.example.vttp.rowterbookshop.model;
 import java.io.StringReader;
 import java.util.LinkedList;
 import java.util.List;
-// import java.util.Optional;
 import java.util.UUID;
 
 import jakarta.json.Json;

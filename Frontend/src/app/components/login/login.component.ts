@@ -10,14 +10,6 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./login.component.css']
 })
 
-// @NgModule({
-//   declarations: [ 
-//     HeaderComponent,
-//   ],
-//   imports: [],
-//   providers: [],
-//   bootstrap: []
-// })
 
 export class LoginComponent implements OnInit {
 

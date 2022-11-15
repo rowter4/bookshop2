@@ -2,9 +2,6 @@ package com.example.vttp.rowterbookshop.repo;
 
 public interface Queries {
 
-    // setting up for admin (not in use)
-    // public static final String SQL_SELECT_ADMIN_USER = "select count(*) as user_count from admin_users where username = ? and password = sha1(?)";                                                      
-    // public static final String SQL_GET_NAME_FROM_USER = "select * from book_details where book_id = ?";
     // to be used below:
     public static final String SQL_GET_USER_FROM_EMAIL = "select * from user where email like ?";
     public static final String SQL_INSERT_NEW_USER = "insert into user (userId,email,password,name) values (?,?,?,?)";  

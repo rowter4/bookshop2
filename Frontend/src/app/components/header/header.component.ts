@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { CartService } from '../cart/cart.service';
-// import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-header',

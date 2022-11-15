@@ -30,7 +30,7 @@ import com.example.vttp.rowterbookshop.model.User;
 import com.example.vttp.rowterbookshop.model.Utility;
 import com.example.vttp.rowterbookshop.service.EmailSenderService;
 import com.example.vttp.rowterbookshop.service.UserService;
-// import net.bytebuddy.utility.RandomString;
+
 
 @RestController
 @CrossOrigin
@@ -60,14 +60,10 @@ public class JwtAuthenticationController {
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 
-	// @RequestMapping(value = "/register", method = RequestMethod.POST)
-	// public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
-	// 	return ResponseEntity.ok(userDetailsService.insertUser(user));
-	// }
 
     @RequestMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public ResponseEntity<String> saveUser(@RequestBody User user) throws Exception {
-		// return ResponseEntity.ok(userDetailsService.insertUser(user));
+		
         try {
             userDetailsService.insertUser(user);
         } catch (Exception e) {
@@ -117,7 +113,7 @@ public class JwtAuthenticationController {
 						 "This is a system generated email. Please do alert us if you have not make this request. ";
 
 		senderService.sendEmail(user.getEmail(), "Reset Your Rowter Bookshop Account", content);
-		// (String toEmail, String subject, String body)
+		
 
 		JsonObject data = Json.createObjectBuilder()
             .add("status", "testingsuccess")

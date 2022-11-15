@@ -12,9 +12,6 @@ import org.springframework.stereotype.Repository;
 import com.example.vttp.rowterbookshop.model.BookOrderHistory;
 import com.example.vttp.rowterbookshop.model.LineItem;
 
-// import vttp2022.iss.book.backend.models.BookOrderHistory;
-
-// import vttp2022.iss.book.backend.models.LineItem;
 import static com.example.vttp.rowterbookshop.repo.Queries.*;
 
 @Repository
@@ -34,8 +31,6 @@ public class OrderRepository {
     }
 
     public boolean insertBookOrder(String orderId, LineItem li, String username) {
-        // insert into line_item(title, quantity, price, ord_id, username) values (?, ?, ?, ?, ?)";
-        // logger.info("insertBookFired with username of %d and quantity of %d and price of %s".formatted(orderId, li.getTitle(), li.getPrice()));
         logger.info("insertBook Details %s - %s - %s - %s - %s ".formatted(li.getTitle(), li.getQuantity(), li.getPrice(), orderId, username));
         int count = template.update(SQL_INSERT_LINE_ITEM, li.getTitle(), li.getQuantity(), li.getPrice(), orderId, username);
         return 1 == count;

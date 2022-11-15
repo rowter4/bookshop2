@@ -29,7 +29,4 @@ public class BooksService {
         return bookRepo.deleteBookById(bookId);
     } 
 
-    // public Optional<String> getNameFromEmail(String email) {
-    //     return bookRepo.getNameFromEmail(email);
-    // } 
 }

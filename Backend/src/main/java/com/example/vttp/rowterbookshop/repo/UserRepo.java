@@ -57,13 +57,6 @@ public class UserRepo {
         return added > 0;
     }
 
-    // public boolean updateUserDetails2(User user) {
-    // return true;
-    // }
-
-    // public boolean findByResetPasswordToken(String token) {
-    // return true;
-    // }
 
     public User getUserFromToken(User user){
         final SqlRowSet q = temp.queryForRowSet(SQL_GET_USER_FROM_TOKEN, user.getResetPasswordToken());
@@ -79,18 +72,5 @@ public class UserRepo {
         return added > 0;
 
     }
-
-    
-    // update
-    // public int updatePw(User user) {
-    // int count = temp.update("update user set password = sha1(?) where email = ?
-    // and password = sha1(?)",
-    // user.getNewPassword(), user.getEmail(), user.getPassword());
-    // return count;
-    // }
-
-    // public void deleteUser(String email) {
-    // temp.update("delete from user where email = ?", email);
-    // }
 
 }

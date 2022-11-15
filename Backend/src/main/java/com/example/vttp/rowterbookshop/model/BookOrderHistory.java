@@ -1,17 +1,13 @@
 package com.example.vttp.rowterbookshop.model;
-
-// import java.sql.Date;
-
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
-// import jakarta.json.JsonValue;
 
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
-// import java.util.Calendar;  
+
 
 public class BookOrderHistory {
     

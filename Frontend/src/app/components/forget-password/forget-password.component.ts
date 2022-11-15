@@ -10,9 +10,6 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 export class ForgetPasswordComponent implements OnInit {
 
   constructor(private authService : AuthenticationService, private router: Router) { }
-  // form: any = {
-  //   email: null
-  // };
 
   email = ''
 
@@ -20,19 +17,14 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   submitReactivation(): void {
-    // const { email } = this.email;
 
     this.authService.forgetPassword(this.email).subscribe({
       next: data => {
         console.log(">>>>> details from the password reset" , data);
         alert("Email successfully send to your email. \nPlease do check your email for the verification link.")
-        // this.isSuccessful = true;
-        // this.isSignUpFailed = false;
         this.router.navigate(['login'])
       },
       error: err => {
-        // this.errorMessage = err.error.message;
-        // this.isSignUpFailed = true;
       }
     });
   }

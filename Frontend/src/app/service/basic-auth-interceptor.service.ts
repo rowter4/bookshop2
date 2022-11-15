@@ -6,8 +6,8 @@ import { AuthenticationService } from './authentication.service';
   providedIn: 'root'
 })
 export class BasicAuthHttpInterceptorService implements HttpInterceptor {
+
   token!: string;
-  // authenticationService: AuthenticationService;
 
   constructor() { }
 

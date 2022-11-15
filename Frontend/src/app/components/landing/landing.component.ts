@@ -15,8 +15,6 @@ import { filter } from 'rxjs';
 })
 export class LandingComponent implements OnInit {
 
-  
-  // content?: string;
   email = sessionStorage.getItem("email")
   admin : boolean = false 
   name : any = "{}"

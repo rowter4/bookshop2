@@ -23,8 +23,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-// import {MatDialogModule} from '@angular/material/dialog';
-// import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
    imports: [
@@ -50,11 +48,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       MatPaginatorModule,
       MatProgressSpinnerModule,
       MatSnackBarModule
-
-      // matModules
    ],
    exports: [
-      // matModules
+
     MatCardModule, 
     MatDialogModule, 
     MatMenuModule,

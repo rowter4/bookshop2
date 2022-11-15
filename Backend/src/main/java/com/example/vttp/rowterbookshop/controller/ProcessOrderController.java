@@ -10,9 +10,7 @@ import com.example.vttp.rowterbookshop.model.UserResponse;
 import com.example.vttp.rowterbookshop.service.EmailSenderService;
 import com.example.vttp.rowterbookshop.service.OrderService;
 
-
 import java.util.Optional;
-// import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;

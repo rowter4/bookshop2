@@ -7,82 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Checkout example · Bootstrap v5.2</title>
-
+    <title>Add New Items</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
-
-    <!-- <script type="text/javascript" src="./script.js"></script> -->
-
-    <!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <style>
-        /* .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        } */
-
-        /* .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        } */
-
-        .container {
-            max-width: 960px;
-        }
-
-        .margin-top {
-            margin-top: 20px;
-        }
-
-        .white-background {
-            --bs-bg-opacity: 1;
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <!-- <link href="form-validation.css" rel="stylesheet"> -->
 </head>
 
 <body class="white-background">
@@ -90,21 +16,19 @@
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <!-- <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72"
-                    height="57"> -->
                 <h2>Add new books form</h2>
                 <p class="lead">Add the books that Rowter Bookshop will be selling</p>
             </div>
 
             <div class="row g-6">
-
                 <div class="col-md-7 col-lg-12">
                     <h4 class="mb-3">New Book Input </h4>
-                    <form [formGroup]="itemForm" enctype="multipart/form-data" >
+                    <form [formGroup]="itemForm" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">Staff</label>
-                                <input type="text" readonly class="form-control-plaintext" id="firstName" formControlName="username">
+                                <input type="text" readonly class="form-control-plaintext" id="firstName"
+                                    formControlName="username">
 
                                 <div class="invalid-feedback">
                                     Valid first name is required.
@@ -113,44 +37,49 @@
 
                             <div class="col-sm-6">
                                 <label for="category" class="form-label">Genre</label>
-                                <input type="text" class="form-control" id="category" placeholder="" formControlName="genre">
-                               
+                                <input type="text" class="form-control" id="category" placeholder=""
+                                    formControlName="genre">
+
                             </div>
 
                             <div class="col-12">
                                 <label for="title" class="form-label">Book Title</label>
-                                <input type="text" class="form-control" id="title" placeholder="" formControlName="bookTitle">
+                                <input type="text" class="form-control" id="title" placeholder=""
+                                    formControlName="bookTitle">
                             </div>
 
                             <div class="col-12">
                                 <label for="edition" class="form-label">Edition</label>
-                                <input type="text" class="form-control" id="edition" placeholder="" formControlName="edition">
+                                <input type="text" class="form-control" id="edition" placeholder=""
+                                    formControlName="edition">
                             </div>
 
                             <div class="col-12">
                                 <label for="authors" class="form-label">Authors</label>
-                                <input type="text" class="form-control" id="authors" placeholder="" formControlName="authors">
+                                <input type="text" class="form-control" id="authors" placeholder=""
+                                    formControlName="authors">
                             </div>
 
                             <div class="col-12">
                                 <label for="format" class="form-label">Format</label>
-                                <input type="text" class="form-control" id="format" placeholder="" formControlName="format" >
+                                <input type="text" class="form-control" id="format" placeholder=""
+                                    formControlName="format">
                             </div>
-
-
 
 
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Book Cover Photo</label>
-                                <input class="form-control" type="file" id="formFile" formControlName="bookPhoto" #bookPhotoUpload>
+                                <input class="form-control" type="file" id="formFile" formControlName="bookPhoto"
+                                    #bookPhotoUpload>
                             </div>
 
 
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
                                 <div class="input-group">
-                                    <!-- <span class="input-group-text"></span> -->
-                                    <textarea class="form-control" id="description" cols="30" rows="10" formControlName="description"></textarea>
+
+                                    <textarea class="form-control" id="description" cols="30" rows="10"
+                                        formControlName="description"></textarea>
                                 </div>
                             </div>
 
@@ -158,57 +87,48 @@
                                 <label for="price" class="form-label">Selling Price</label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
-                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="price">
-                                    <!-- <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div> -->
+                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                        formControlName="price">
+
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="pages" class="form-label">No of Pages</label>
                                 <div class="input-group">
-                                    <!-- <span class="input-group-text">$</span> -->
+
                                     <input type="number" class="form-control" formControlName="pages">
-                                    <!-- <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div> -->
+
                                 </div>
                             </div>
 
-                        
 
                             <div class="col-md-4">
                                 <label for="rating" class="form-label">Rating</label>
-                                <input type="text" class="form-control" id="rating" placeholder="" formControlName="rating">
-                                
+                                <input type="text" class="form-control" id="rating" placeholder=""
+                                    formControlName="rating">
+
                             </div>
                         </div>
 
-
                         <hr class="my-4">
 
-                        <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="itemForm.invalid" (click)="saveBook()">Add into book selling list</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="itemForm.invalid"
+                            (click)="saveBook()">Add into book selling list</button>
                     </form>
 
-                    <button class="w-100 btn btn-primary btn-lg margin-top" [routerLink]="['/']" >Back to main page</button>
+                    <button class="w-100 btn btn-primary btn-lg margin-top" [routerLink]="['/']">Back to main
+                        page</button>
                 </div>
             </div>
         </main>
 
         <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">&copy; Rowter Bookshop 2022</p>
-            <!-- <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul> -->
+
         </footer>
     </div>
 
-
-
-    <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
 
 </body>
 

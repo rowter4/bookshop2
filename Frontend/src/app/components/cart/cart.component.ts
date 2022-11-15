@@ -1,9 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { LineItem, NewOrder } from '../model';
+import { NewOrder } from '../model';
 import { CartService } from './cart.service';
 import { SubmitOrderService } from './submitorder.service';
 

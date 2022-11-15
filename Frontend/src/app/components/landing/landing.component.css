@@ -1,0 +1,9 @@
+.background-non-admin {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.background-admin {
+    --bs-bg-opacity: 1;
+    background-color: #dc35359e !important;
+}

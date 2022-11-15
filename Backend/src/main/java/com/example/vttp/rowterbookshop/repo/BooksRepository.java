@@ -1,25 +1,19 @@
 package com.example.vttp.rowterbookshop.repo;
 
 import java.sql.ResultSet;
-// import java.sql.SQLException;
-// import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.dao.DataAccessException;
+
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
-// import org.springframework.jdbc.core.ResultSetExtractor;
-// import org.springframework.jdbc.support.rowset.SqlRowSet;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
-
-// import com.mysql.cj.xdevapi.Result;
 import com.example.vttp.rowterbookshop.model.BookDetail;
-// import vttp2022.iss.book.backend.models.BookDetail;
 import com.example.vttp.rowterbookshop.model.BookSummary;
 
 import static com.example.vttp.rowterbookshop.repo.Queries.*;
@@ -87,22 +81,6 @@ public class BooksRepository {
 
     }
 
-    // public Optional<String> getNameFromEmail(String email) {
-
-    //     // logger.info("Book ID being passed into repository : %s".formatted(bookId));
-
-    //     SqlRowSet rs = template.queryForRowSet(SQL_GET_NAME_FROM_USER,email);
-        
-    //     return null;
-    //     // return template.query(SQL_BOOKS_BY_ID,
-    //     //         (ResultSet rs) -> {
-    //     //             if (!rs.next())
-    //     //                 return Optional.empty();
-    //     //             return Optional.of(BookDetail.create(rs));
-    //     //         },
-    //     //         bookId);
-
-    // }
 
     public boolean insertNewBook(MultipartFile file, BookDetail formDetails) {
 

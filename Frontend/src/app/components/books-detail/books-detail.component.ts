@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { CartService } from '../cart/cart.service';
 import { BookDetail } from '../model';
 import { BooksDetailService } from './books-detail.service';
-// import { DecimalPipe } from '@angular/common';
 import { CartService } from '../cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -67,10 +65,6 @@ export class BooksDetailComponent implements OnInit {
 
     
   }
-
-  // transformDecimal(rating: number) {
-  //   return this._decimalPipe.transform(rating, '1.2-2' )
-  // }
 
 
   navigateBack() {

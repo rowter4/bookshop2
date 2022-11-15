@@ -11,9 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from "@angular/router/testing";
-// import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -39,7 +37,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { ResetPasswordService } from './components/reset-password/reset-password.service';
 // import { VoiceRecognitionService } from './components/add-new-items/voice-recognition.service';
-// import { PastOrderListComponent } from './components/past-order-list/past-order-list.component';
+
 
 const routes: Routes = [
   { path: '', component: LandingComponent, canActivate:[AuthGuardService] },
@@ -78,7 +76,6 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     AngularMaterialModule,
-    // AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes, { useHash: true }),
     HttpClientModule,

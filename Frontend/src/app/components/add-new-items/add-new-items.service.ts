@@ -2,8 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { firstValueFrom } from "rxjs";
 import { BookDetail } from "../model";
-// import { AddNewItem } from "./add-new-items.model";
-// import { AddItem } from './add-new-items.model';
 
 @Injectable()
 export class AddNewItemsService {
@@ -24,12 +22,4 @@ export class AddNewItemsService {
         )
     }
 
-   
-
-    // getBookDetailById(bookId: string) { // this branch is not being used
-    //     console.info("Book id in angular service: ", bookId)
-    //     return firstValueFrom(
-    //         this.http.get<BookDetail>(`/book-detail/${bookId}`)  
-    //     )
-    // }
 }
